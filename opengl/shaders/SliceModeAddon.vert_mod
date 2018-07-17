@@ -1,0 +1,24 @@
+namespace NovaBuiltinShaders{
+          struct SliceModeAddon {
+              static constexpr char const * name = "SliceModeAddon";
+              static constexpr char const * vertex_shader_addon = R"lang::GLSL(
+
+uniform vec4 slice_plane0=vec4(-1,0,0,0);
+uniform vec4 slice_plane1=vec4(-1,0,0,0);
+//uniform mat4 model;
+
+void ComputeSlice( vec4 p ){
+     vec4 vsPos = model*p; 
+     gl_ClipDistance[0] = dot( slice_plane0, vsPos );
+     gl_ClipDistance[1] = dot( slice_plane1, vsPos );
+}
+
+void NoSlice() {
+   gl_ClipDistance[0] = 1; // We set these to positive 1 to indicate we are always
+   gl_ClipDistance[1] = 1; // on the 'right' side of the plane.
+}
+
+)lang::GLSL";
+
+        };
+}      
