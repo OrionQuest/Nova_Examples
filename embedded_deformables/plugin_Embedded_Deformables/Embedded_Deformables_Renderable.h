@@ -10,7 +10,7 @@
 #include <nova/Tools/Utilities/File_Utilities.h>
 
 #include "ViewportManager.h"
-#include "Simulation_Renderable.h"
+#include "plugins/Simulation/Simulation_Renderable.h"
 
 #include <boost/filesystem.hpp>
 namespace fs = boost::filesystem;
