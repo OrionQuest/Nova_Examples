@@ -34,6 +34,8 @@ class Position_Based_State
             element_rest_volume(i)=(d==2)?fabs(Dm.Determinant())*(T).5:fabs(Dm.Determinant())*(T)one_sixth;}
     }
 
+    virtual ~Position_Based_State() {}
+
     Matrix<T,d,d> Get_Shape_Matrix(const Array<TV>& X,const int index) const
     {
         Vector<TV,d> columns;

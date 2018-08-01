@@ -83,6 +83,7 @@ Nova::ViewportManager::SetWindowGeometry(int width, int height) {
 
         }
         break;
+    default: break;
     }
 
     for( int v = 0; v < this->_viewports.size(); v++ )
@@ -507,6 +508,7 @@ Nova::ViewportManager::Change_Slice( unsigned int v, int slice_offset ){
         case SLICE_Z:
             viewport.slice_info.slice_inc = std::max( 0, std::min((int)viewport.slice_info.max_slice.z, viewport.slice_info.slice_inc + slice_offset) );
             break;
+        default: break;
         }
     }
 }
@@ -602,6 +604,7 @@ Nova::ViewportManager::GetSlicePlanes(unsigned int v) const {
         output[0].w = slice_distance_min - viewport.slice_info.slice_start.z;
         output[1].w = slice_distance_max + viewport.slice_info.slice_start.z;
         break;
+    default: break;
     }
 
     return output;

@@ -32,6 +32,7 @@ if(ENABLE_EMBEDDED_DEFORMABLES_PLUGIN)
     ${Boost_LIBRARIES}
     ${assimp_LIBRARIES}
     plugin_Assimp_miniball
+    opengl_kernel
     )
   
   target_compile_features(plugin_Embedded_Deformables

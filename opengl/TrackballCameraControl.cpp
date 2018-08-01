@@ -1,4 +1,5 @@
 #include "TrackballCameraControl.h"
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/norm.hpp>
 #include <glm/gtc/quaternion.hpp>
 #include <iostream>
@@ -61,6 +62,7 @@ void Nova::TrackballCameraControl::MouseDown(const Nova::IOEvent& event) {
         case Nova::IOEvent::M_MIDDLE:
             _state = ZOOM;
             break;
+        default: break;
         }           
     }
     

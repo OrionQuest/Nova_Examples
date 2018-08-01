@@ -38,7 +38,7 @@ class Standard_Tests: public Embedded_Deformables_Example<T,d>
     {}
 
 //######################################################################
-    void Parse_Options()
+    void Parse_Options() override
     {
         Base::Parse_Options();
         output_directory="Test_"+std::to_string(test_number)+"_Resolution_"+std::to_string(counts(0));

@@ -19,6 +19,7 @@ if( ENABLE_GRID_PLUGIN )
     PRIVATE
     nova::tools
     ${Boost_LIBRARIES}
+    opengl_kernel
     )
   
   target_compile_features( plugin_Grid

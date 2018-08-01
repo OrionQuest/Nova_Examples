@@ -8,6 +8,7 @@
 #include <iostream>
 #include "miniball/Seb.h"
 #include <limits>
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/intersect.hpp>
 
 using namespace Nova;

@@ -30,6 +30,7 @@ if( ENABLE_ASSIMP_PLUGIN )
     ${Boost_LIBRARIES}
     ${assimp_LIBRARIES}
     plugin_Assimp_miniball
+    opengl_kernel
     )
   
   target_compile_features( plugin_Assimp

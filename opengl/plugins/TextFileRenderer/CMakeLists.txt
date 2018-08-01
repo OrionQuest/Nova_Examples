@@ -19,5 +19,10 @@ if( ENABLE_TEXTFILERENDERER_PLUGIN )
     cxx_auto_type
     )
 
+  target_link_libraries( plugin_TextFileRenderer
+    PRIVATE
+    opengl_kernel
+    )
+
 endif()
 

@@ -157,7 +157,7 @@ class GridRenderable: public Renderable
     virtual bool selectable() {return false;}
 
     virtual float hit_test(glm::vec3 start_point,glm::vec3 end_point)
-    {}
+    {return 0.;}
 
     virtual glm::vec4 bounding_sphere()
     {return _bounding_sphere;}

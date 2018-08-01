@@ -1,4 +1,5 @@
 #include "PlanarCameraControl.h"
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/norm.hpp>
 #include <glm/gtc/quaternion.hpp>
 #include <glm/gtc/constants.hpp> 
@@ -51,6 +52,7 @@ void Nova::PlanarCameraControl::MouseDown(const Nova::IOEvent& event) {
         dollyStart = glm::vec2( event.mousebutton_data->x, event.mousebutton_data->y );
         state = DOLLY;
         break;
+    default: break;
     }
 };
 

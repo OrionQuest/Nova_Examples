@@ -27,6 +27,7 @@ if( ENABLE_FREETYPE_PLUGIN )
   target_link_libraries( plugin_FreeTypeRenderer
     PRIVATE
     ${FREETYPE_LIBRARIES}
+    opengl_kernel
     )
   
   target_compile_features( plugin_FreeTypeRenderer

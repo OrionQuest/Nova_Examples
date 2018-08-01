@@ -73,8 +73,8 @@ class Embedded_Deformables_Example: public Example<T,d>
     void Add_Force_Differentials(const Array<TV>& DX,Array<TV>& force);
     void Interpolate_Embedded_Values(Array<TV>& array,const Array<TV>& embedding_array);
     void Distribute_To_Embedding_Parents(const Array<TV>& array,Array<TV>& embedding_array);
-    void Register_Options();
-    void Parse_Options();
+    void Register_Options() override;
+    void Parse_Options() override;
     void Read_Output_Files(const int frame);
     void Write_Output_Files(const int frame) const override;
 //######################################################################

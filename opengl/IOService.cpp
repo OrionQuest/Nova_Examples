@@ -49,6 +49,7 @@ Nova::IOService::translateEventType( const Nova::IOEvent& event ) const {
         case IOEvent::M_UP:
             type=MOUSE_UP;
             break;
+        default: break;
         }
         break;
     case IOEvent::MOUSEMOVE:
@@ -569,6 +570,7 @@ Nova::KeyBinder::Dispatch( const IOEvent& event ) const
             _app.GetIOService().Trigger( dispatched_event );
         }
         break;
+    default: break;
     }
 
 }
