@@ -1,15 +1,17 @@
 //!#####################################################################
 //! \file Rotated_Stress_Derivative.cpp
 //!#####################################################################
+#include <nova/Tools/Matrices/Symmetric_Matrix_2x2.h>
+#include <nova/Tools/Matrices/Symmetric_Matrix_3x3.h>
 #include "Rotated_Stress_Derivative.h"
 using namespace Nova;
 //######################################################################
 // dP_hat
 //######################################################################
-template<class T> Matrix<T,2,2> Rotated_Stress_Derivative<T,2>::
-dP_hat(const Matrix<T,2,2>& dF_hat) const
+template<class T> Matrix<T,2> Rotated_Stress_Derivative<T,2>::
+dP_hat(const Matrix<T,2>& dF_hat) const
 {
-    Matrix<T,2,2> dP_hat;
+    Matrix<T,2> dP_hat;
     dP_hat(0,0)=a0000*dF_hat(0,0)+a0011*dF_hat(1,1);
     dP_hat(1,1)=a0011*dF_hat(0,0)+a1111*dF_hat(1,1);
     dP_hat(0,1)=a0101*dF_hat(0,1)+a0110*dF_hat(1,0);
@@ -23,7 +25,7 @@ dP_hat(const Matrix<T,2,2>& dF_hat) const
 template<class T> void Rotated_Stress_Derivative<T,2>::
 Make_Positive_Definite()
 {
-    Matrix<T,2,2> A({TV({a0000,a0011}),TV({a0011,a1111})});
+    Symmetric_Matrix<T,2> A(a0000,a0011,a1111);
     A=A.Positive_Definite_Part();
     a0000=A(0,0);a0011=A(0,1);a1111=A(1,1);
 
@@ -53,10 +55,10 @@ operator-=(const Rotated_Stress_Derivative& input)
 //######################################################################
 // dP_hat
 //######################################################################
-template<class T> Matrix<T,3,3> Rotated_Stress_Derivative<T,3>::
-dP_hat(const Matrix<T,3,3>& dF_hat) const
+template<class T> Matrix<T,3> Rotated_Stress_Derivative<T,3>::
+dP_hat(const Matrix<T,3>& dF_hat) const
 {
-    Matrix<T,3,3> dP_hat;
+    Matrix<T,3> dP_hat;
     dP_hat(0,0)=a0000*dF_hat(0,0)+a0011*dF_hat(1,1)+a0022*dF_hat(2,2);
     dP_hat(1,1)=a0011*dF_hat(0,0)+a1111*dF_hat(1,1)+a1122*dF_hat(2,2);
     dP_hat(2,2)=a0022*dF_hat(0,0)+a1122*dF_hat(1,1)+a2222*dF_hat(2,2);
@@ -75,7 +77,7 @@ dP_hat(const Matrix<T,3,3>& dF_hat) const
 template<class T> void Rotated_Stress_Derivative<T,3>::
 Make_Positive_Definite()
 {
-    Matrix<T,3,3> A({TV({a0000,a0011,a0022}),TV({a0011,a1111,a1122}),TV({a0022,a1122,a2222})});
+    Symmetric_Matrix<T,3> A(a0000,a0011,a0022,a1111,a1122,a2222);
     A=A.Positive_Definite_Part();
     a0000=A(0,0);a0011=A(0,1);a0022=A(0,2);a1111=A(1,1);a1122=A(1,2);a2222=A(2,2);
 

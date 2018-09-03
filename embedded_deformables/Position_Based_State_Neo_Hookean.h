@@ -21,7 +21,7 @@ class Position_Based_State_Neo_Hookean: public Position_Based_State<T,d>
     using Base::simulation_mesh;using Base::Dm_inverse;
     using Base::Get_Shape_Matrix;
 
-    Array<Matrix<T,d,d>> U,V;
+    Array<Matrix<T,d>> U,V;
     Array<Diagonal_Matrix<T,d>> Sigma;
 
     Position_Based_State_Neo_Hookean(const T_Volume* simulation_mesh)
@@ -38,9 +38,9 @@ class Position_Based_State_Neo_Hookean: public Position_Based_State<T,d>
     virtual void Update_Position_Based_State(const Array<TV>& X) override
     {
         for(size_t i=0;i<simulation_mesh->elements.size();++i){
-            Matrix<T,d,d> Ds=Get_Shape_Matrix(X,i);
-            Matrix<T,d,d> F=Ds*Dm_inverse(i);
-            F.Singular_Value_Decomposition(U(i),Sigma(i),V(i));
+            Matrix<T,d> Ds=Get_Shape_Matrix(X,i);
+            Matrix<T,d> F=Ds*Dm_inverse(i);
+            F.Fast_Singular_Value_Decomposition(U(i),Sigma(i),V(i));
             Sigma(i)=Sigma(i).Clamp_Min((T).05);}
     }
 };
