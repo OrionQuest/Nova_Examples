@@ -27,6 +27,8 @@ class Neo_Hookean: public Force<T,d>
     Neo_Hookean(const PBS_Neo_Hookean *position_based_state_input)
         :Base(),position_based_state(position_based_state_input)
     {
+        youngs_modulus=(T)1e3;
+        poissons_ratio=(T).2;
         Initialize_Lame_Parameters();
     }
 
