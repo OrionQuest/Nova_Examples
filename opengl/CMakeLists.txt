@@ -21,6 +21,10 @@ add_library( opengl_kernel
   ResourceManager.cpp
   )
 
+if(NOT DEFINED OpenGL_GL_PREFERENCE)
+    set(OpenGL_GL_PREFERENCE "GLVND")
+endif()
+
 pkg_check_modules (glfw3 REQUIRED glfw3)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
