@@ -56,6 +56,7 @@ class Texture
       case LIGHTMAP:
 	return std::string("texture_lightmap");
       };
+      return std::string("unrecognized_texture");
     }
 };
 
